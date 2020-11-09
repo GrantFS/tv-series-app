@@ -1,0 +1,49 @@
+.image-grid {
+    margin: 15px;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.image-grid.banner {
+    grid-template-columns: 1fr;
+}
+
+.image-grid.background {
+    grid-template-columns: 1fr;
+}
+
+.image-grid.single {
+    grid-template-columns: 1fr;
+}
+
+img.poster,
+img.banner,
+img.typography,
+img.unknown,
+img.background {
+    max-width: 100%;
+    border-radius: 4px;
+    box-shadow: var(--shadow-1);
+}
+
+@media screen and (min-width: 426px) {
+    .image-grid {
+        margin: 20px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .image-grid {
+        margin: 20px;
+    }
+    .image-grid.banner {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .image-grid.background {
+        grid-template-columns: 1fr 1fr;
+    }
+}
