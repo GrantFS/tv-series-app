@@ -32,9 +32,9 @@ class Series extends Component {
           </h1>
         </header>
 
-        <div className="container">
+        <div className="container-fluid">
           <div className="row">
-            <div className="center">
+            <div className="center col">
               <input className="form-control search" value={seriesName} type="text" placeholder="Search..." onChange={this.onSeriesInputChange} />
             </div>
           </div>
@@ -45,28 +45,30 @@ class Series extends Component {
             &nbsp;{this.state.series.length}
           </span>
         </div>
-        <div className="container">
+        <div className="container-fluid">
           <div className="row">
-            <div className="bordered">
-              {
-                !isFetching && series.length === 0 && seriesName.trim() === '' &&
-                <p>
-                  <Loader spin={false} />
-                </p>
-              }
-              {
-                !isFetching && series.length === 0 && seriesName.trim() !== '' &&
-                <p>
-                  No TV Series has been found!
-                </p>
-              }
-              {
-                isFetching && <Loader spin={true} />
-              }
-              {
+            <div className="col">
+              <div className="bordered">
+                {
+                  !isFetching && series.length === 0 && seriesName.trim() === '' &&
+                  <p>
+                    <Loader spin={false} />
+                  </p>
+                }
+                {
+                  !isFetching && series.length === 0 && seriesName.trim() !== '' &&
+                  <p>
+                    No TV Series has been found!
+                  </p>
+                }
+                {
+                  isFetching && <Loader spin={true} />
+                }
+                {
 
-                !isFetching && series.length > 0 && <SeriesList list={this.state.series} />
-              }
+                  !isFetching && series.length > 0 && <SeriesList list={this.state.series} />
+                }
+              </div>
             </div>
           </div>
         </div>
