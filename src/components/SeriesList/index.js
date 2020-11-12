@@ -1,12 +1,8 @@
+import { Link } from 'react-router-dom';
 import React, { Component } from '../../../node_modules/react';
 import './index.css';
 
 class SeriesList extends Component {
-  openItem(e, show_id) {
-    e.preventDefault();
-    window.location = `/series/${show_id}`;
-  }
-  
   render() {
     const { list } = this.props;
         return (
@@ -14,9 +10,9 @@ class SeriesList extends Component {
               <ul>
                   { list.map(series => (
                       <li key={series.show.id}>
-                        <a href="/" onClick={(e) => {this.openItem(e, series.show.id)}}>
-                            {series.show.name}
-                        </a>
+                        <Link to={`/series/${series.show.id}`} >
+                          {series.show.name}
+                        </Link>
                       </li>
                   ))}
               </ul>

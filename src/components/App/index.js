@@ -17,7 +17,7 @@ class App extends Component {
           <SearchContextProvider>
             <Navbar />
             <Main />
-            </SearchContextProvider>
+          </SearchContextProvider>
         </Provider>
       </div>
     );
