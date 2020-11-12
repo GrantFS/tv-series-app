@@ -5,6 +5,7 @@ import Main from '../../components/Main';
 import Navbar from '../../components/Navbar';
 import 'whatwg-fetch';
 import withReduxStore from "../../store/lib/with-redux-store";
+import SearchContextProvider from '../../contexts/SearchContext';
 
 class App extends Component {
 
@@ -13,8 +14,10 @@ class App extends Component {
     return (
       <div className="App">
         <Provider store={reduxStore}>
-          <Navbar />
-          <Main />
+          <SearchContextProvider>
+            <Navbar />
+            <Main />
+            </SearchContextProvider>
         </Provider>
       </div>
     );

@@ -4,25 +4,19 @@ import Loader from '../../components/Loader';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { ensureLoaded } from "../../store/actions";
-import { findShow } from "../../store/actions";
+import { SearchContext } from '../../contexts/SearchContext';
 
 class Series extends Component {
-  state = {
-    series: [],
-    seriesName: '',
-    isFetching: false
-  }
+
+  static contextType = SearchContext
 
   componentDidMount() {
 
   }
 
-  onSeriesInputChange = e => {
-    this.setState({ seriesName: e.target.value, isFetching: true });
-    this.setState(findShow(e.target.value));
-  }
   render() {
-    const { series, seriesName, isFetching } = this.state;
+    const { onSeriesInputChange, series, seriesName, isFetching } = this.context;
+
 
     return (
       <div>
@@ -32,17 +26,11 @@ class Series extends Component {
           </h1>
         </header>
 
-        <div className="container-fluid">
-          <div className="row">
-            <div className="center col">
-              <input className="form-control search" value={seriesName} type="text" placeholder="Search..." onChange={this.onSeriesInputChange} />
-            </div>
-          </div>
-        </div>
+
         <div className="found">
           Series Found:
           <span>
-            &nbsp;{this.state.series.length}
+            &nbsp;{series.length}
           </span>
         </div>
         <div className="container-fluid">
@@ -66,7 +54,7 @@ class Series extends Component {
                 }
                 {
 
-                  !isFetching && series.length > 0 && <SeriesList list={this.state.series} />
+                  !isFetching && series.length > 0 && <SeriesList list={series} />
                 }
               </div>
             </div>
