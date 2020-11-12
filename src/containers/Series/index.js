@@ -15,7 +15,7 @@ class Series extends Component {
   }
 
   render() {
-    const { onSeriesInputChange, series, seriesName, isFetching } = this.context;
+    const { series, seriesName, isFetching } = this.context;
 
 
     return (
