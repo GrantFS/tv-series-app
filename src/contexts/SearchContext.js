@@ -20,7 +20,6 @@ class SearchContextProvider extends Component {
     if (e.key === 'Enter') {
       this.setState({ seriesName: e.target.value, isFetching: true });
       this.setState(findShow(e.target.value));
-      // window.location = `/`;
       this.props.history.push({
         pathname:"/",
         state:findShow(e.target.value)
