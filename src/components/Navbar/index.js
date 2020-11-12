@@ -5,7 +5,7 @@ import { SearchContext } from '../../contexts/SearchContext';
 export class Navbar extends Component {
     static contextType = SearchContext
     render() {
-        const { onSeriesInputChange } = this.context;
+        const { onSeriesInputChange, onSeriesInputKeyDown } = this.context;
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -28,7 +28,7 @@ export class Navbar extends Component {
                                 </Link>
                             </li>
                         </ul>
-                        <input className="form-control search"  type="text" placeholder="Search..." onChange={ onSeriesInputChange } />
+                        <input className="form-control search"  type="text" placeholder="Search..." onChange={ onSeriesInputChange } onKeyDown={ onSeriesInputKeyDown} />
                     </div>
                 </nav>
             </div>
