@@ -1,18 +1,11 @@
 import React, { Component } from '../../../node_modules/react';
 import SeriesList from '../../components/SeriesList';
 import Loader from '../../components/Loader';
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { ensureLoaded } from "../../store/actions";
 import { SearchContext } from '../../contexts/SearchContext';
 
 class Series extends Component {
 
   static contextType = SearchContext
-
-  componentDidMount() {
-
-  }
 
   render() {
     const { series, seriesName, isFetching } = this.context;
@@ -65,16 +58,5 @@ class Series extends Component {
     )
   }
 }
-
-function mapStoreToProps(store, passed) {
-  return {
-    params: passed.match.params,
-  };
-}
-
-const mapDispatchToProps = dispatch => bindActionCreators({ ensureLoaded }, dispatch);
-
-Series = connect(mapStoreToProps, mapDispatchToProps)(Series);
-
 
 export default Series;
