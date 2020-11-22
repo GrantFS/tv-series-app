@@ -4,7 +4,7 @@ import thunkMiddleware from "redux-thunk";
 import rootReducer from "./reducers/rootReducer";
 
 const loggerMiddleware = createLogger();
-const composeEnhancers = process.browser && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = process.browser ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
 
 let middleware = [thunkMiddleware];
 if(process.browser && process.env.NODE_ENV !== "production") {

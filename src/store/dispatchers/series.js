@@ -5,7 +5,7 @@ export function getSeries(id) {
     dispatch({type: types.GET_SERIES});
     fetch(`http://api.tvmaze.com/shows/${id}?embed=episodes`)
     .then(response => response.json())
-    .then(json => dispatch(getSeriesSuccess(json)));  
+    .then(json => dispatch(getSeriesSuccess(json)));
   }
 }
 

@@ -5,7 +5,7 @@ export function loadSeasons(id) {
     dispatch({type: types.GET_SEASONS});
     fetch(`http://api.tvmaze.com/shows/${id}/seasons`)
     .then(response => response.json())
-    .then(json => dispatch(getSeasonsSuccess(json)));  
+    .then(json => dispatch(getSeasonsSuccess(json)));
   }
 }
 

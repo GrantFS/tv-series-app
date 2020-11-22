@@ -5,14 +5,22 @@ import { loadImages } from "./dispatchers/images";
 
 const api = "http://api.tvmaze.com/";
 let shows = {};
+let people = {};
+let all = {};
 
 export function findShow(search) {
   fetch(`${api}/search/shows?q=${search}`)
     .then(response => response.json())
     .then(json => {
-      shows = { series: json, isFetching: false };
+      all.series = json;
     });
-    return shows;
+    fetch(`${api}/search/people?q=${search}`)
+    .then(response => response.json())
+    .then(json => {
+      all.people = json
+      all.isFetching = false;
+    });
+    return all;
 }
 
 export function ensureLoaded(keys) {
@@ -21,7 +29,7 @@ export function ensureLoaded(keys) {
     if (!Array.isArray(keys)) {
       keys = [keys];
     }
-    
+
     keys.forEach((key) => {
       let { id, name } = key;
       if (status && typeof (status[name]) != "undefined" && !status[name].isLoaded && !status[name].isFetching) {

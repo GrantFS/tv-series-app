@@ -9,6 +9,7 @@ export const SearchContext = createContext();
 class SearchContextProvider extends Component {
   state = {
     series: [],
+    people: [],
     seriesName: '',
     isFetching: false
   }
