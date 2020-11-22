@@ -4,21 +4,27 @@ import { loadCast } from "./dispatchers/cast";
 import { loadImages } from "./dispatchers/images";
 
 const api = "http://api.tvmaze.com/";
-let shows = {};
-let people = {};
-let all = {};
+let all = {
+  series:{},
+  people:{},
+  isFetching: true,
+  isFetchingPeople: true,
+  seriesName: ''
+};
 
 export function findShow(search) {
+  all.seriesName = search;
   fetch(`${api}/search/shows?q=${search}`)
     .then(response => response.json())
     .then(json => {
       all.series = json;
+      all.isFetching = false;
     });
     fetch(`${api}/search/people?q=${search}`)
     .then(response => response.json())
     .then(json => {
-      all.people = json
-      all.isFetching = false;
+      all.people = json;
+      all.isFetchingPeople = false;
     });
     return all;
 }

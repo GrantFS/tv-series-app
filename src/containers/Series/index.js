@@ -9,7 +9,7 @@ class Series extends Component {
   static contextType = SearchContext
 
   render() {
-    const { series, people, seriesName, isFetching } = this.context;
+    const { series, people, seriesName, isFetching, isFetchingPeople } = this.context;
     return (
       <div>
         <header className="App-header">
@@ -70,23 +70,23 @@ class Series extends Component {
             <div className="col">
               <div className="bordered">
                 {
-                  !isFetching && people.length === 0 && seriesName.trim() === '' &&
+                  !isFetchingPeople && people.length === 0 && seriesName.trim() === '' &&
                   <p>
                     <Loader spin={false} icon="fa-2x fa fa-users"/>
                   </p>
                 }
                 {
-                  !isFetching && people.length === 0 && seriesName.trim() !== '' &&
+                  !isFetchingPeople && people.length === 0 && seriesName.trim() !== '' &&
                   <p>
-                    No TV Series has been found!
+                    No person has been found!
                   </p>
                 }
                 {
-                  isFetching && <Loader spin={true} />
+                  isFetchingPeople && <Loader spin={true} />
                 }
                 {
 
-                  !isFetching && people.length > 0 && <PersonList list={people} />
+                  !isFetchingPeople && people.length > 0 && <PersonList list={people} />
                 }
               </div>
             </div>

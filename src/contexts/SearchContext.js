@@ -11,19 +11,51 @@ class SearchContextProvider extends Component {
     series: [],
     people: [],
     seriesName: '',
-    isFetching: false
+    isFetching: false,
+    isFetchingPeople: false,
+    typingTimeout: 0,
   }
+
+  constructor(props) {
+    super(props);
+    this.onSeriesInputChange = this.onSeriesInputChange.bind(this);
+ }
+
+  componentDidMount() {
+
+      this.setState(this.props.history.location.state);
+
+  }
+
   onSeriesInputChange = e => {
-    this.setState({ seriesName: e.target.value, isFetching: true });
-    this.setState(findShow(e.target.value));
+    const self = this;
+    if (self.state.typingTimeout) {
+      clearTimeout(self.state.typingTimeout);
+   }
+
+   self.setState(
+     {
+       seriesName: e.target.value,
+       isFetching: true,
+       isFetchingPeople: true,
+       typingTimeout : setTimeout(function () {
+        var data = findShow(self.state.seriesName);
+        self.setState(data);
+        self.props.history.push({
+          state:data
+        });
+      }, 500)
+      }
+     );
   }
   onSeriesInputKeyDown = e => {
     if (e.key === 'Enter') {
-      this.setState({ seriesName: e.target.value, isFetching: true });
-      this.setState(findShow(e.target.value));
+      this.setState({ seriesName: e.target.value, isFetching: true, isFetchingPeople: true });
+      var data = findShow(e.target.value);
+      this.setState(data);
       this.props.history.push({
         pathname:"/",
-        state:findShow(e.target.value)
+        state:data
        });
     }
 

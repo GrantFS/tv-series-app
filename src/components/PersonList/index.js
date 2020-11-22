@@ -11,7 +11,7 @@ class PersonList extends Component {
   render() {
     const { list } = this.props;
         return (
-            <div className="series-list center">
+            <div className="person-list center">
               <ul>
                   { list.map(item => (
                       <li key={item.person.id}>
