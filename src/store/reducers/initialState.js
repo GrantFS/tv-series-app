@@ -25,5 +25,10 @@ export default {
       isFetching:false,
       isLoaded:false,
       data: {}
+    },
+    person:{
+      isFetching:false,
+      isLoaded:false,
+      data: {}
     }
   };

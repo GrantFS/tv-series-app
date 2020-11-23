@@ -5,6 +5,7 @@ import series from "./seriesReducer";
 import seasons from "./seasonsReducer";
 import cast from "./castReducer";
 import images from "./imagesReducer";
+import person from "./personReducer";
 
 const rootReducer = combineReducers({
   params,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   series,
   seasons,
   cast,
-  images
+  images,
+  person
 });
 
 export default rootReducer;

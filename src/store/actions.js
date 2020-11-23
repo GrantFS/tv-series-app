@@ -2,6 +2,7 @@ import { loadSeasons } from "./dispatchers/seasons";
 import { getSeries } from "./dispatchers/series";
 import { loadCast } from "./dispatchers/cast";
 import { loadImages } from "./dispatchers/images";
+import { loadPeople} from "./dispatchers/people";
 
 const api = "http://api.tvmaze.com/";
 let all = {
@@ -55,6 +56,10 @@ export function ensureLoaded(keys) {
           case "images":
             console.log("Load Images");
             dispatch(loadImages(id));
+            break;
+          case "person":
+            console.log("Load People");
+            dispatch(loadPeople(id));
             break;
           default:
             break;
