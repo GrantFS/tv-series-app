@@ -1,11 +1,13 @@
-import React, { Component } from '../../../node_modules/react';
+import React, { Component } from 'react';
+import { CharacterProps } from './interface';
 
-class Character extends Component {
+
+class Character extends Component <CharacterProps> {
 
   render() {
     const { character } = this.props;
     return (
-      <div>
+      <div data-testid="character">
         <div className="image">
           {
             character.image !== null &&

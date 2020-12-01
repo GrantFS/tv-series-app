@@ -23,7 +23,7 @@ class People extends Component {
     }
 
 
-;
+// add click through from cast to person, also list out shows they are in
 
     return (
       <div>

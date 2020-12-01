@@ -1,7 +1,7 @@
-import React, { Component } from '../../../node_modules/react';
+import React, { Component } from 'react';
+import { ImageProps } from "./interface";
 
-
-class Image extends Component {
+class Image extends Component <ImageProps> {
 
   render() {
     const { image, image_key, setActivePhoto } = this.props;
@@ -14,7 +14,7 @@ class Image extends Component {
       src = image.resolutions.medium.url;
     }
     return (
-      <div>
+      <div data-testid="image">
         <div className={`${type}-image`} key={image.id}>
             <img src={src} alt="" className={type} onClick={(e) => setActivePhoto(image_key)} />
         </div>
