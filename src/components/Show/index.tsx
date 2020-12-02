@@ -2,8 +2,10 @@ import React from 'react';
 import Button from "../Button";
 import dayjs from "dayjs";
 import './index.css';
+import { ShowProps } from "./interface";
+import { BtnType } from "../../common/types";
 
-const GenreListItem = ({ genre }) => {
+const GenreListItem = ({ genre }: any) => {
     return (
         <li>
             {genre}
@@ -11,7 +13,7 @@ const GenreListItem = ({ genre }) => {
     )
 }
 
-const Show = ({ show }) => {
+const Show = ({ show } : ShowProps) => {
     console.log(show);
     let premiered = "";
     if (show.premiered) {
@@ -25,7 +27,7 @@ const Show = ({ show }) => {
                 </h1>
             </header>
             <div className="show-container">
-                
+
                 <div className="row2 md">
                     <div>
                         <img src={show.image.original} alt={show.name} className="img-50" />
@@ -76,10 +78,10 @@ const Show = ({ show }) => {
                             </span>
                         </div>
                         <div className="row3">
-                            <Button type="primary btn-block" href={`/season/${show.id}`} name="Seasons" />
-                            <Button type="primary btn-block" href={`/showings/${show.id}`} name="UK TV Showings" />
-                            <Button type="primary btn-block" href={`/cast/${show.id}`} name="Cast" />
-                            <Button type="primary btn-block" href={`/images/${show.id}`} name="Images" />
+                            <Button type={BtnType.primary} classes="btn-block" href={`/season/${show.id}`} name="Seasons" />
+                            <Button type={BtnType.primary} classes="btn-block" href={`/showings/${show.id}`} name="UK TV Showings" />
+                            <Button type={BtnType.primary} classes="btn-block" href={`/cast/${show.id}`} name="Cast" />
+                            <Button type={BtnType.primary} classes="btn-block" href={`/images/${show.id}`} name="Images" />
                         </div>
                     </div>
                 </div>

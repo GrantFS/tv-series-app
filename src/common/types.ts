@@ -2,5 +2,11 @@ export enum BtnType {
   success,
   danger,
   info,
-  warning
+  warning,
+  primary
+}
+
+export enum Gender {
+  male,
+  female
 }

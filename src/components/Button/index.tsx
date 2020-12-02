@@ -6,11 +6,11 @@ import { ButtonProps } from './interface';
 class Button extends Component <ButtonProps> {
 
   render() {
-    let { href, name, type } = this.props;
+    let { href, name, type, classes } = this.props;
 
     return (
       <div>
-        <Link data-testid="button" to={href} className={`btn btn-${type}`}>
+        <Link data-testid="button" to={href} className={`btn btn-${type} ${classes}`}>
           {name}
         </Link>
 

@@ -1,6 +1,6 @@
 import React, { Component } from '../../../node_modules/react';
 import Loader from '../../components/Loader';
-import Show from '../../components/Show';
+import Show from '../../components/Show/index.tsx';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { ensureLoaded } from "../../store/actions";

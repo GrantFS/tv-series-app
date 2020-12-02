@@ -3,7 +3,7 @@ import Loader from '../../components/Loader';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { ensureLoaded } from "../../store/actions";
-import Person from '../../components/Person';
+import Person from '../../components/Person/index.tsx';
 // import './index.css';
 
 class People extends Component {

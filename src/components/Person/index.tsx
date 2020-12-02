@@ -1,16 +1,21 @@
 import dayjs from "dayjs";
-import React, { Component } from '../../../node_modules/react';
+import React, { Component } from 'react';
+import { PersonProps } from "./interface";
 
-class Person extends Component {
+class Person extends Component <PersonProps> {
 
   render() {
     const { person } = this.props;
-    let birthday = dayjs(person.birthday).format("DD MMMM YYYY");
-    
-    let deathday = "";
+    let deathday: string = "";
+    let birthday: string = "";
+
+    if (person.birthday !== null) {
+      birthday = dayjs(person.birthday).format("DD MMMM YYYY");
+    }
     if (person.deathday !== null) {
       deathday = dayjs(person.deathday).format("DD MMMM YYYY");
     }
+
     return (
       <div>
         <div className="image">
@@ -39,13 +44,13 @@ class Person extends Component {
             {birthday}
           </span>
           {
-            deathday !== "" && 
+            deathday !== "" &&
             <span className="left bordered">
               Died:
             </span>
           }
           {
-            deathday !== "" && 
+            deathday !== "" &&
             <span className="bordered">
               { deathday }
             </span>
