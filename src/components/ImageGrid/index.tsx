@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Image from '../Image';
-// import { ImageGridProps } from "./interface";
+import { ImageGridProps } from "./interface";
 
-class ImageGrid extends Component  {
+class ImageGrid extends Component <ImageGridProps>  {
   render() {
     let {images, setActivePhoto, extra_classes} = this.props;
     return (

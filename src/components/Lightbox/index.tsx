@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { findById } from "../../store/helpers";
+import { LightboxProps } from "./interface";
+import { Image } from "../../common/interfaces";
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 
-class LightboxWrapper extends Component {
-  getImageSrc(image) {
+class LightboxWrapper extends Component <LightboxProps> {
+  getImageSrc(image: Image) {
     var src = image.resolutions.original.url;
     if (typeof image.resolutions.large !== "undefined") {
       src = image.resolutions.large.url;
@@ -13,18 +15,19 @@ class LightboxWrapper extends Component {
   }
   render() {
     let { images, photo_index, active, setActivePhoto, setLightboxStatus } = this.props;
-    let nextSrc = false;
-    let next_original_key = false;
-    let prevSrc = false;
-    let prev_original_key = false;
-    let src = "";
-    let title = "";
-    let caption = "";
+
+    let nextSrc: any = false;
+    let prevSrc: any = false;
+    let next_original_key: number = 0;
+    let prev_original_key: number = 0;
+    let src: string = "";
+    let title: string = "";
+    let caption: string = "";
 
     if (images) {
       var images_id_list = images.map(function(e) {
         return e.id
-      })
+      });
       if(photo_index === 0) {
         photo_index = images_id_list[0];
       }
