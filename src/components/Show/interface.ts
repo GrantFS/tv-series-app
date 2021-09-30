@@ -2,7 +2,7 @@ export interface ShowProps {
   show: Show
 }
 
-interface Show {
+export interface Show {
   id: number;
   name: string;
   image: any;

@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 import { ensureLoaded } from "../../store/actions";
 import Person from '../../components/Person/index.tsx';
 import Character from '../../components/Character';
+import { withRouter } from 'react-router-dom';
 // import './index.css';
 
 class Cast extends Component {
@@ -73,4 +74,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({ ensureLoaded }, disp
 
 Cast = connect(mapStoreToProps, mapDispatchToProps)(Cast);
 
-export default Cast;
+export default withRouter(Cast);

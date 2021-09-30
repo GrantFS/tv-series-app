@@ -3,6 +3,7 @@ import SeriesList from '../../components/SeriesList';
 import PersonList from '../../components/PersonList';
 import Loader from '../../components/Loader';
 import { SearchContext } from '../../contexts/SearchContext';
+import { withRouter } from 'react-router-dom';
 
 class Series extends Component {
 
@@ -98,4 +99,4 @@ class Series extends Component {
   }
 }
 
-export default Series;
+export default withRouter(Series);

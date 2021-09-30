@@ -1,8 +1,7 @@
 import React from 'react';
 import { LoaderProps } from "./interface";
 
-const Loader = (props: LoaderProps) => {
-    let { spin, icon } = props;
+const Loader = ({ spin, icon }: LoaderProps) => {
     if (typeof icon == 'undefined') {
         icon = "fa-2x fa fa-television";
     }

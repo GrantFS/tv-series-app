@@ -1,11 +1,8 @@
 import dayjs from "dayjs";
-import React, { Component } from 'react';
+import React from 'react';
 import { PersonProps } from "./interface";
 
-class Person extends Component <PersonProps> {
-
-  render() {
-    const { person } = this.props;
+const Person = ({person}: PersonProps) => {
     let deathday: string = "";
     let birthday: string = "";
 
@@ -66,6 +63,5 @@ class Person extends Component <PersonProps> {
       </div>
     )
   }
-}
 
 export default Person;

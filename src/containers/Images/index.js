@@ -7,6 +7,7 @@ import { sort } from "../../store/helpers";
 import './index.css';
 import Lightbox from '../../components/Lightbox';
 import ImageGrid from '../../components/ImageGrid';
+import { withRouter } from 'react-router-dom';
 
 
 class Images extends Component {
@@ -68,7 +69,7 @@ class Images extends Component {
     if (typeof images.banner !== "undefined" && images.banner.length === 1) {
       banner_class = "single";
     }
-    
+
 
     return (
       <div>
@@ -79,7 +80,7 @@ class Images extends Component {
 
         </header>
         <React.Fragment>
-          {all_images && Object.keys(all_images).length && 
+          {all_images && Object.keys(all_images).length &&
             <Lightbox images={all_images} active={lightbox_active} photo_index={lightbox_photo_index} setActivePhoto={this.setActivePhoto} setLightboxStatus={this.setLightboxStatus}/>
           }
         </React.Fragment>
@@ -128,4 +129,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({ ensureLoaded }, disp
 
 Images = connect(mapStoreToProps, mapDispatchToProps)(Images);
 
-export default Images;
+export default withRouter(Images);

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { ensureLoaded } from "../../store/actions";
 import Person from '../../components/Person/index.tsx';
-// import './index.css';
+import { withRouter } from 'react-router-dom';
 
 class People extends Component {
   componentDidMount() {
@@ -68,5 +68,5 @@ const mapDispatchToProps = dispatch => bindActionCreators({ ensureLoaded }, disp
 
 People = connect(mapStoreToProps, mapDispatchToProps)(People);
 
-export default People;
+export default withRouter(People);
 

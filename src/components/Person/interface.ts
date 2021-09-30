@@ -4,7 +4,7 @@ export interface PersonProps {
   person: Person;
 }
 
-interface Person {
+export interface Person {
   id: number;
   name: string;
   gender: Gender;

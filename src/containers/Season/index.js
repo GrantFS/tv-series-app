@@ -1,6 +1,6 @@
 import React, { Component } from '../../../node_modules/react';
 import Loader from '../../components/Loader';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { ensureLoaded } from "../../store/actions";
@@ -15,7 +15,7 @@ class Season extends Component {
       { id: id, name: "seasons" }
     ]);
   }
-  getSeasonItem(season) {
+  getSeasonItem(season, series) {
     let premiered = "";
     if (season.premiereDate) {
         premiered = dayjs(season.premiereDate).format("DD MMMM YYYY");
@@ -23,7 +23,7 @@ class Season extends Component {
     return (
       <div className="bordered" key={season.number}>
 
-        <Link to={`/`}>
+        <Link to={`/series/${series.id}`}>
           <h2>
             Season {season.number}
           </h2>
@@ -78,7 +78,7 @@ class Season extends Component {
           isLoaded && seasons !== null &&
           <div className="season-container">
             {seasons.map(season => {
-              return this.getSeasonItem(season);
+              return this.getSeasonItem(season, series);
             })
             }
           </div>
@@ -101,4 +101,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({ ensureLoaded }, disp
 
 Season = connect(mapStoreToProps, mapDispatchToProps)(Season);
 
-export default Season;
+export default withRouter(Season);

@@ -8,7 +8,7 @@ import Images from '../../containers/Images';
 import "../../../node_modules/font-awesome/css/font-awesome.min.css"
 import People from '../../containers/People';
 
-const Main = props => {
+const Main = () => {
     return (
     <Switch>
         <Route exact path="/" component={Series} />

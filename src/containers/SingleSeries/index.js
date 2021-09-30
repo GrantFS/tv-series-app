@@ -4,6 +4,7 @@ import Show from '../../components/Show/index.tsx';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { ensureLoaded } from "../../store/actions";
+import { withRouter } from 'react-router-dom';
 
 class SingleSeries extends Component {
   componentDidMount() {
@@ -61,4 +62,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({ ensureLoaded }, disp
 SingleSeries = connect(mapStoreToProps, mapDispatchToProps)(SingleSeries);
 
 
-export default SingleSeries;
+export default withRouter(SingleSeries);
