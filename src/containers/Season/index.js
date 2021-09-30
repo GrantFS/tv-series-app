@@ -6,6 +6,7 @@ import { bindActionCreators } from "redux";
 import { ensureLoaded } from "../../store/actions";
 import dayjs from "dayjs";
 import './index.css';
+import Header from '../../components/Header';
 
 class Season extends Component {
   componentDidMount() {
@@ -60,12 +61,8 @@ class Season extends Component {
 
     return (
       <div>
-        <header className="App-header">
-          <h1>
-            {series.name} Seasons
-          </h1>
+        <Header title={`${series.name} Seasons`} />
 
-        </header>
 
         {!isLoaded &&
           <div className="container">

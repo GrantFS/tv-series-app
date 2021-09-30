@@ -6,7 +6,7 @@ import { ensureLoaded } from "../../store/actions";
 import Person from '../../components/Person/index.tsx';
 import Character from '../../components/Character';
 import { withRouter } from 'react-router-dom';
-// import './index.css';
+import Header from '../../components/Header';
 
 class Cast extends Component {
   componentDidMount() {
@@ -24,15 +24,11 @@ class Cast extends Component {
     if (this.props.isLoaded) {
       isLoaded = true;
     }
+    const title = `${series.name} Cast`;
 
     return (
       <div>
-        <header className="App-header">
-          <h1>
-            {series.name} Cast
-          </h1>
-
-        </header>
+        <Header title={title} />
 
         {!isLoaded &&
           <div className="container">

@@ -8,6 +8,7 @@ import './index.css';
 import Lightbox from '../../components/Lightbox';
 import ImageGrid from '../../components/ImageGrid';
 import { withRouter } from 'react-router-dom';
+import Header from '../../components/Header';
 
 
 class Images extends Component {
@@ -73,12 +74,8 @@ class Images extends Component {
 
     return (
       <div>
-        <header className="App-header">
-          <h1>
-            {series.name} Images
-          </h1>
+        <Header title={`${series.name} Images`} />
 
-        </header>
         <React.Fragment>
           {all_images && Object.keys(all_images).length &&
             <Lightbox images={all_images} active={lightbox_active} photo_index={lightbox_photo_index} setActivePhoto={this.setActivePhoto} setLightboxStatus={this.setLightboxStatus}/>

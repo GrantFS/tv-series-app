@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { ensureLoaded } from "../../store/actions";
 import { withRouter } from 'react-router-dom';
+import Header from '../../components/Header';
 
 class SingleSeries extends Component {
   componentDidMount() {
@@ -26,11 +27,7 @@ class SingleSeries extends Component {
       <div>
         {!isLoaded &&
           <div>
-            <header className="App-header">
-              <h1>
-                TV Series
-              </h1>
-            </header>
+            <Header title="TV Series" />
             <div className="container">
               <div className="row">
                 <Loader spin={true} />

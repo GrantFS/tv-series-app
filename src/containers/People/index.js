@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 import { ensureLoaded } from "../../store/actions";
 import Person from '../../components/Person/index.tsx';
 import { withRouter } from 'react-router-dom';
+import Header from '../../components/Header';
 
 class People extends Component {
   componentDidMount() {
@@ -27,12 +28,7 @@ class People extends Component {
 
     return (
       <div>
-        <header className="App-header">
-          <h1>
-            Person
-          </h1>
-
-        </header>
+        <Header title="Person" />
 
         {!isLoaded &&
           <div className="container">
