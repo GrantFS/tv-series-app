@@ -5,7 +5,6 @@ import {withRouter} from 'react-router-dom';
 
 export const SearchContext = createContext();
 
-
 class SearchContextProvider extends Component {
   state = {
     series: [],
