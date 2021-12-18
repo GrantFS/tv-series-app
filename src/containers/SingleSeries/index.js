@@ -1,64 +1,54 @@
-import React, { Component } from '../../../node_modules/react';
-import Loader from '../../components/Loader';
-import Show from '../../components/Show';
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { ensureLoaded } from "../../store/actions";
+import { Component } from "react"
+import Loader from "../../components/Loader"
+import Show from "../../components/Show"
+import { connect } from "react-redux"
+import { bindActionCreators } from "redux"
+import { ensureLoaded } from "../../store/actions"
 
 class SingleSeries extends Component {
-  componentDidMount() {
-    const { id } = this.props.match.params;
-    this.props.ensureLoaded([
-      { id: id, name: "series" }
-    ]);
-  }
-
-  render() {
-
-    const { series } = this.props;
-    let isLoaded = false;
-    if (this.props.isLoaded) {
-      isLoaded = true;
+    componentDidMount() {
+        const { id } = this.props.match.params
+        this.props.ensureLoaded([{ id: id, name: "series" }])
     }
 
-    return (
-      <div>
-        {!isLoaded &&
-          <div>
-            <header className="App-header">
-              <h1>
-                TV Series
-              </h1>
-            </header>
-            <div className="container">
-              <div className="row">
-                <Loader spin={true} />
-              </div>
-            </div>
-          </div>
-        }
-        {
-          isLoaded && series !== null &&
-          <div>
-            <Show show={series} />
-          </div>
+    render() {
+        const { series } = this.props
+        let isLoaded = false
+        if (this.props.isLoaded) {
+            isLoaded = true
         }
 
-      </div>
-    )
-  }
+        return (
+            <div>
+                {!isLoaded && (
+                    <div>
+                        <header className="App-header">
+                            <h1>TV Series</h1>
+                        </header>
+                        <div className="container">
+                            <div className="row">
+                                <Loader spin={true} />
+                            </div>
+                        </div>
+                    </div>
+                )}
+                {isLoaded && series !== null && (
+                    <div>
+                        <Show show={series} />
+                    </div>
+                )}
+            </div>
+        )
+    }
 }
 function mapStoreToProps(store, passed) {
-  return {
-    params: passed.match.params,
-    series: store.series.data,
-    isLoaded: store.series.isLoaded
-  };
+    return {
+        params: passed.match.params,
+        series: store.series.data,
+        isLoaded: store.series.isLoaded,
+    }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({ ensureLoaded }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ ensureLoaded }, dispatch)
 
-SingleSeries = connect(mapStoreToProps, mapDispatchToProps)(SingleSeries);
-
-
-export default SingleSeries;
+export default connect(mapStoreToProps, mapDispatchToProps)(SingleSeries)

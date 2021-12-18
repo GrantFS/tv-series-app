@@ -1,21 +1,19 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import './index.css';
+import { Component } from "react"
+import { Link } from "react-router-dom"
+import "./index.css"
 
 class Button extends Component {
-  
-  render() {
-    let { href, name, type } = this.props;
+    render() {
+        let { href, name, type } = this.props
 
-    return (
-      <div>
-        <Link to={href} className={`btn btn-${type}`}>
-          {name}
-        </Link>
-        
-      </div>
-    );
-  }
+        return (
+            <div>
+                <Link to={href} className={`btn btn-${type}`}>
+                    {name}
+                </Link>
+            </div>
+        )
+    }
 }
 
-export default Button;
+export default Button
