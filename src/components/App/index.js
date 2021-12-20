@@ -4,15 +4,14 @@ import { Provider } from "react-redux"
 import Main from "../../components/Main"
 import Navbar from "../../components/Navbar"
 import "whatwg-fetch"
-import withReduxStore from "../../store/lib/with-redux-store"
 import SearchContextProvider from "../../contexts/SearchContext"
+import store from "../../store"
 
 class App extends Component {
     render() {
-        const { reduxStore } = this.props
         return (
             <div className="App">
-                <Provider store={reduxStore}>
+                <Provider store={store}>
                     <SearchContextProvider>
                         <Navbar />
                         <Main />
@@ -23,4 +22,4 @@ class App extends Component {
     }
 }
 
-export default withReduxStore(App)
+export default App
