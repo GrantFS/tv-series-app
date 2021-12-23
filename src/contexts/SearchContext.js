@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { findShow } from "../store/actions"
 
 export const SearchContext = createContext()
@@ -15,6 +16,7 @@ const SearchContextProvider = (props) => {
     }
     const [state, setState] = useState(initialState)
     const [typingTimeout, setTypingTimeout] = useState()
+    const navigate = useNavigate()
 
     const search = (query) => {
         var data = findShow(state.seriesName)
@@ -35,8 +37,13 @@ const SearchContextProvider = (props) => {
     const onSeriesInputKeyDown = (e) => {
         if (e.key === "Enter") {
             setTypingTimeout(null)
+            search(e.target.value)
+            navigate({
+                to: "/",
+                options: { state },
+            })
+            navigate("/")
         }
-        search(e.target.value)
     }
 
     return (

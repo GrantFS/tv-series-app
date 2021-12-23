@@ -1,11 +1,11 @@
-import { Component } from "react"
+import { Component, Fragment } from "react"
 import Image from "../Image"
 
 class ImageGrid extends Component {
     render() {
         let { images, setActivePhoto, extra_classes } = this.props
         return (
-            <React.Fragment>
+            <Fragment>
                 <div className={` image-grid ${extra_classes}`}>
                     {images.map((image, key) => (
                         <Image
@@ -16,7 +16,7 @@ class ImageGrid extends Component {
                         />
                     ))}
                 </div>
-            </React.Fragment>
+            </Fragment>
         )
     }
 }

@@ -1,4 +1,4 @@
-import { Component } from "react"
+import { Component, Fragment } from "react"
 import { findById } from "../../store/helpers"
 import Lightbox from "react-image-lightbox"
 import "react-image-lightbox/style.css"
@@ -50,7 +50,7 @@ class LightboxWrapper extends Component {
             caption = ""
         }
         return (
-            <React.Fragment>
+            <Fragment>
                 {active && (
                     <Lightbox
                         mainSrc={src}
@@ -63,7 +63,7 @@ class LightboxWrapper extends Component {
                         onMoveNextRequest={() => setActivePhoto(next_original_key)}
                     />
                 )}
-            </React.Fragment>
+            </Fragment>
         )
     }
 }

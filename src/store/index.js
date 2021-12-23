@@ -3,6 +3,6 @@ import initialState from "./reducers/initialState"
 
 const store = configureStore(initialState)
 
-// (store.dispatch as ThunkDispatch<State, void, AnyAction>)(loadFeatures());
+// (store.dispatch)(loadFeatures());
 
 export default store

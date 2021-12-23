@@ -1,6 +1,5 @@
 export default {
     params: {},
-    global_params: {},
     show: {
         isFetching: false,
         isLoaded: false,

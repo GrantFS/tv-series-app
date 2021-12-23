@@ -36,6 +36,7 @@ export function ensureLoaded(keys) {
         if (!Array.isArray(keys)) {
             keys = [keys]
         }
+        console.log(status)
 
         keys.forEach((key) => {
             let { id, name } = key

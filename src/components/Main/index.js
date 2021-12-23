@@ -6,6 +6,7 @@ import Images from "../../containers/Images"
 import "../../../node_modules/font-awesome/css/font-awesome.min.css"
 import People from "../../containers/People"
 import { Route, Routes } from "react-router-dom"
+import Loader from "../Loader"
 
 const Main = () => {
     return (
@@ -14,7 +15,7 @@ const Main = () => {
             <Route exact path="/series/:id" element={<SingleSeries />} />
             <Route exact path="/season/:id" element={<Season />} />
             <Route exact path="/person/:id" element={<People />} />
-            {/* <Route exact path="/showings/:id" element={<SingleSeries />} /> */}
+            <Route exact path="/showings/:id" element={<Loader spin />} />
             <Route exact path="/cast/:id" element={<Cast />} />
             <Route exact path="/images/:id" element={<Images />} />
         </Routes>

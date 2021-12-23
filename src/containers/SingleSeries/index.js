@@ -1,49 +1,36 @@
-import { Component } from "react"
 import Loader from "../../components/Loader"
 import Show from "../../components/Show"
 import { connect } from "react-redux"
+import { useParams } from "react-router-dom"
+import { useEffect } from "react"
 import { bindActionCreators } from "redux"
 import { ensureLoaded } from "../../store/actions"
 
-class SingleSeries extends Component {
-    componentDidMount() {
-        const { id } = this.props.match.params
-        this.props.ensureLoaded([{ id: id, name: "series" }])
-    }
+const SingleSeries = ({ series, isLoaded, ensureLoaded: ensureIsLoaded }) => {
+    const { id } = useParams()
 
-    render() {
-        const { series } = this.props
-        let isLoaded = false
-        if (this.props.isLoaded) {
-            isLoaded = true
-        }
+    useEffect(() => {
+        ensureIsLoaded([{ id: id, name: "series" }])
+    }, [id])
 
+    if (!isLoaded) {
         return (
             <div>
-                {!isLoaded && (
-                    <div>
-                        <header className="App-header">
-                            <h1>TV Series</h1>
-                        </header>
-                        <div className="container">
-                            <div className="row">
-                                <Loader spin={true} />
-                            </div>
-                        </div>
+                <header className="App-header">
+                    <h1>TV Series</h1>
+                </header>
+                <div className="container">
+                    <div className="row">
+                        <Loader />
                     </div>
-                )}
-                {isLoaded && series !== null && (
-                    <div>
-                        <Show show={series} />
-                    </div>
-                )}
+                </div>
             </div>
         )
     }
+    return <Show show={series} />
 }
-function mapStoreToProps(store, passed) {
+const mapStoreToProps = (store) => {
     return {
-        params: passed.match.params,
         series: store.series.data,
         isLoaded: store.series.isLoaded,
     }
