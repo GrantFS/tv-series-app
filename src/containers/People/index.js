@@ -1,55 +1,45 @@
-import { Component } from "react"
+import { useEffect } from "react"
 import Loader from "../../components/Loader"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import { ensureLoaded } from "../../store/actions"
 import Person from "../../components/Person"
-// import './index.css';
+import { useParams } from "react-router-dom"
 
-class People extends Component {
-    componentDidMount() {
-        const { id } = this.props.match.params
-        this.props.ensureLoaded([{ id: id, name: "person" }])
-    }
+const People = ({ person, isLoaded, ensureLoaded: ensureIsLoaded }) => {
+    const { id } = useParams()
+    useEffect(() => {
+        ensureIsLoaded([{ id: id, name: "person" }])
+    }, [id])
 
-    render() {
-        const { person } = this.props
+    return (
+        <div>
+            <header className="App-header">
+                <h1>{person.name}</h1>
+            </header>
 
-        let isLoaded = false
-        if (this.props.isLoaded) {
-            isLoaded = true
-        }
-
-        return (
-            <div>
-                <header className="App-header">
-                    <h1>Person</h1>
-                </header>
-
-                {!isLoaded && (
-                    <div className="container">
-                        <div className="row">
-                            <Loader spin={true} />
+            {!isLoaded && (
+                <div className="container">
+                    <div className="row">
+                        <Loader spin={true} />
+                    </div>
+                </div>
+            )}
+            {isLoaded && person !== null && (
+                <div className="person-container">
+                    <div className="row">
+                        <div className="col">
+                            <Person person={person} />
                         </div>
                     </div>
-                )}
-                {isLoaded && person !== null && (
-                    <div className="person-container">
-                        <div className="row">
-                            <div className="col">
-                                <Person person={person} />
-                            </div>
-                        </div>
-                    </div>
-                )}
-            </div>
-        )
-    }
+                </div>
+            )}
+        </div>
+    )
 }
 
-function mapStoreToProps(store, passed) {
+const mapStoreToProps = (store) => {
     return {
-        params: passed.match.params,
         person: store.person.data,
         isLoaded: store.person.isLoaded,
     }
@@ -57,6 +47,4 @@ function mapStoreToProps(store, passed) {
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ ensureLoaded }, dispatch)
 
-People = connect(mapStoreToProps, mapDispatchToProps)(People)
-
-export default People
+export default connect(mapStoreToProps, mapDispatchToProps)(People)

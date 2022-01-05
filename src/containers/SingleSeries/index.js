@@ -27,7 +27,7 @@ const SingleSeries = ({ series, isLoaded, ensureLoaded: ensureIsLoaded }) => {
             </div>
         )
     }
-    return <Show show={series} />
+    return <Show show={series} series={series} />
 }
 const mapStoreToProps = (store) => {
     return {

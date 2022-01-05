@@ -5,14 +5,16 @@ import { bindActionCreators } from "redux"
 import { ensureLoaded } from "../../store/actions"
 import Person from "../../components/Person"
 import Character from "../../components/Character"
+import { useParams } from "react-router-dom"
 
 const Cast = ({ series, cast, isLoaded, ensureLoaded: ensureIsLoaded }) => {
+    const { id } = useParams()
     useEffect(() => {
         ensureIsLoaded([
-            { id: series.id, name: "series" },
-            { id: series.id, name: "cast" },
+            { id: id, name: "series" },
+            { id: id, name: "cast" },
         ])
-    }, [series.id])
+    }, [id])
 
     return (
         <div>

@@ -19,7 +19,9 @@ class Person extends Component {
                 </div>
                 <div className="row2 table-frame">
                     <span className="left bordered">Name:</span>
-                    <span className="bordered">{person.name}</span>
+                    <span className="bordered">
+                        <a href={`/person/${person.id}`}>{person.name}</a>
+                    </span>
                     <span className="left bordered">Gender:</span>
                     <span className="bordered">{person.gender}</span>
                     <span className="left bordered">Birthday:</span>

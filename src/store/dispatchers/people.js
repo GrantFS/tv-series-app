@@ -3,7 +3,7 @@ import * as types from "../types"
 export function loadPeople(id) {
     return (dispatch) => {
         dispatch({ type: types.GET_PERSON })
-        fetch(`http://api.tvmaze.com/people/${id}`)
+        fetch(`http://api.tvmaze.com/people/${id}?embed=castcredits`)
             .then((response) => response.json())
             .then((json) => dispatch(getPersonSuccess(json)))
     }
