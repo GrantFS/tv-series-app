@@ -1,16 +1,25 @@
 import dayjs from "dayjs"
-import { Component } from "react"
+import SingleShow from "../SingleShow"
 
-class Person extends Component {
-    render() {
-        const { person } = this.props
-        let birthday = dayjs(person.birthday).format("DD MMMM YYYY")
+const Person = ({ person }) => {
+    const shows = []
+    if (person._embedded && person._embedded.castcredits.length != 0) {
+        person._embedded.castcredits.map((itm) => {
+            const newId = itm._links.show.href.replace("https://api.tvmaze.com/shows/", "")
+            // character https://api.tvmaze.com/characters/16795
+            if (newId !== "") {
+                shows.push(newId)
+            }
+        })
+    }
+    let birthday = dayjs(person.birthday).format("DD MMMM YYYY")
 
-        let deathday = ""
-        if (person.deathday !== null) {
-            deathday = dayjs(person.deathday).format("DD MMMM YYYY")
-        }
-        return (
+    let deathday = ""
+    if (person.deathday !== null) {
+        deathday = dayjs(person.deathday).format("DD MMMM YYYY")
+    }
+    return (
+        <>
             <div>
                 <div className="image">
                     {person.image !== null && (
@@ -33,8 +42,9 @@ class Person extends Component {
                     <span className="bordered">{person.country !== null && person.country.name}</span>
                 </div>
             </div>
-        )
-    }
+            {shows !== [] && shows.map((itm) => <SingleShow id={itm} key={itm} />)}
+        </>
+    )
 }
 
 export default Person
